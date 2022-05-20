@@ -69,6 +69,10 @@ public void addNurse(NurseID entityId, Uniform uniform){
        appendChange( new AnesthesiaStorageUpdated(entityId, storage)).apply();
     }
 
+    public void updateAnesthesiaBrand(AnesthesiaID entityId, Brand brand){
+        appendChange( new AnesthesiaBrandUpdated(entityId, brand)).apply();
+    }
+
     //getters
     public ANDirector AnDirector() {
         return anDirector;
