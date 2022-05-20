@@ -2,6 +2,7 @@ package com.sofkau.hospital.surgery;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import com.sofkau.hospital.surgery.events.InstrumentalistAdded;
 import com.sofkau.hospital.surgery.events.SurgeonAdded;
 import com.sofkau.hospital.surgery.events.SurgeryCreated;
 import com.sofkau.hospital.surgery.values.*;
@@ -42,6 +43,12 @@ public class Surgery extends AggregateEvent<SurgeryID> {
     appendChange(new SurgeonAdded(entityId,surgeryRoom)).apply();
 }
 
+    public void addInstrumentalist(InstrumentalistID entityId, HeadSurgeon headSurgeon, Area area){
+        Objects.requireNonNull(entityId);
+        Objects.requireNonNull(headSurgeon);
+        Objects.requireNonNull(area);
+        appendChange(new InstrumentalistAdded(entityId, headSurgeon, area)).apply();
+    }
 
 
     //getters

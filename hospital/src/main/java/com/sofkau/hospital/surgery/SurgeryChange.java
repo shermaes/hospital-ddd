@@ -1,6 +1,7 @@
 package com.sofkau.hospital.surgery;
 
 import co.com.sofka.domain.generic.EventChange;
+import com.sofkau.hospital.surgery.events.InstrumentalistAdded;
 import com.sofkau.hospital.surgery.events.SurgeonAdded;
 import com.sofkau.hospital.surgery.events.SurgeryCreated;
 
@@ -25,7 +26,13 @@ public class SurgeryChange extends EventChange {
             surgery.surgeons.add(new Surgeon(event.getEntityId(), event.getSurgeryRoom()));
         });
 
-
+        apply((InstrumentalistAdded event)->{
+            var numberOfInstrumentalists = surgery.getInstrumentalists().size();
+            if (numberOfInstrumentalists>10){
+                throw new IllegalArgumentException("You can't create more than 10 instrumentalists");
+            }
+            surgery.instrumentalists.add(new Instrumentalist(event.getEntityId(), event.getHeadSurgeon(), event.getArea()));
+        });
 
         }
 
