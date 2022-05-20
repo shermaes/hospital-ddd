@@ -68,6 +68,13 @@ public class AnesthesiologyChange extends EventChange {
                     .orElseThrow(() -> new IllegalArgumentException("We did not find any Anesthesia"));
             function.updateBrand(event.getBrand());
         });
+
+        apply((AnesthesiologistTypeOfAnesthesiaUpdated event) -> {
+            //getting the anesthesiologist that im going to change
+            var function = anesthesiology.getAnesthesiologistById(event.getEntityId())
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Anesthesiologist"));
+            function.updateTypeOfAnesthesia(event.getTypeOfAnesthesia());
+        });
     }
 
 }

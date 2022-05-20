@@ -73,6 +73,10 @@ public void addNurse(NurseID entityId, Uniform uniform){
         appendChange( new AnesthesiaBrandUpdated(entityId, brand)).apply();
     }
 
+    public void updatedAnesthesiologistTypeOfAnesthesia(AnesthesiaID entityId, TypeOfAnesthesia typeOfAnesthesia){
+        appendChange(new AnesthesiologistTypeOfAnesthesiaUpdated(entityId, typeOfAnesthesia)).apply();
+    }
+
     //getters
     public ANDirector AnDirector() {
         return anDirector;
