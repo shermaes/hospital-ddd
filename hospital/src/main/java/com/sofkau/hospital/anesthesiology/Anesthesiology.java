@@ -2,12 +2,13 @@ package com.sofkau.hospital.anesthesiology;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import com.sofkau.hospital.anesthesiology.events.AnesthesiologistAdded;
 import com.sofkau.hospital.anesthesiology.events.AnesthesiologyCreated;
-import com.sofkau.hospital.anesthesiology.values.ANDirector;
-import com.sofkau.hospital.anesthesiology.values.AnesthesiologyID;
+import com.sofkau.hospital.anesthesiology.values.*;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class Anesthesiology extends AggregateEvent<AnesthesiologyID> {
@@ -34,22 +35,28 @@ public class Anesthesiology extends AggregateEvent<AnesthesiologyID> {
     }
 
     //commands
-
+public void addAnesthesiologist(AnesthesiologistID entityId, YearsOfExperience yearsOfExperience, TypeOfAnesthesia typeOfAnesthesia){
+    Objects.requireNonNull(entityId);
+    Objects.requireNonNull(yearsOfExperience);
+    Objects.requireNonNull(typeOfAnesthesia);
+    appendChange(new AnesthesiologistAdded(entityId,yearsOfExperience,typeOfAnesthesia));
+    //here we append this change in order to create the event / applying that event into this aggregate
+}
 
     //getters
-    public ANDirector getAnDirector() {
+    public ANDirector AnDirector() {
         return anDirector;
     }
 
-    public Set<Anesthesiologist> getAnesthesiologist() {
+    public Set<Anesthesiologist> Anesthesiologists() {
         return anesthesiologists;
     }
 
-    public Set<Nurse> getNurse() {
+    public Set<Nurse> Nurses() {
         return nurses;
     }
 
-    public Set<Anesthesia> getAnesthesia() {
+    public Set<Anesthesia> Anesthesias() {
         return anesthesias;
     }
 }
