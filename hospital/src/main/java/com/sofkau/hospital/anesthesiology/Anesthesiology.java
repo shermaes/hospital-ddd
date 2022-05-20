@@ -82,35 +82,35 @@ public void addNurse(NurseID entityId, Uniform uniform){
         return anDirector;
     }
 
-    public Set<Anesthesiologist> Anesthesiologists() {
+    public Set<Anesthesiologist> getAnesthesiologists() {
         return anesthesiologists;
     }
 
-    public Set<Nurse> Nurses() {
+    public Set<Nurse> getNurses() {
         return nurses;
     }
 
-    public Set<Anesthesia> Anesthesias() {
+    public Set<Anesthesia> getAnesthesias() {
         return anesthesias;
     }
 
     //this will pick where im going to display the changes
     protected Optional<Anesthesiologist> getAnesthesiologistById(AnesthesiologistID entityId) {
-        return Anesthesiologists()
+        return getAnesthesiologists()
                 .stream()
                 .filter(anesthesiologist -> anesthesiologist.identity().equals(entityId))
                 .findFirst();
     }
 
     protected Optional<Nurse> getNurseById(NurseID entityId) {
-        return Nurses()
+        return getNurses()
                 .stream()
                 .filter(nurse -> nurse.identity().equals(entityId))
                 .findFirst();
     }
 
     protected Optional<Anesthesia> getAnesthesiaById(AnesthesiaID entityId) {
-        return Anesthesias()
+        return getAnesthesias()
                 .stream()
                 .filter(nurse -> nurse.identity().equals(entityId))
                 .findFirst();

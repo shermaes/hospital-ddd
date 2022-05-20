@@ -1,4 +1,7 @@
 package com.sofkau.hospital.surgery.commands;
 
-public class AddInstrumentalist {
+import co.com.sofka.domain.generic.Command;
+
+public class AddInstrumentalist extends Command {
+
 }

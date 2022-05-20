@@ -16,7 +16,7 @@ public class AnesthesiologyChange extends EventChange {
         });
 
         apply((AnesthesiologistAdded event)->{
-            var numberOfAnesthesiologists = anesthesiology.Anesthesiologists().size();
+            var numberOfAnesthesiologists = anesthesiology.getAnesthesiologists().size();
             if (numberOfAnesthesiologists>5){
                 throw new IllegalArgumentException("You can't create more than 5 anesthesiologists");
             }
@@ -24,7 +24,7 @@ public class AnesthesiologyChange extends EventChange {
         });
 
         apply((NurseAdded event)->{
-            var numberOfNurses = anesthesiology.Nurses().size();
+            var numberOfNurses = anesthesiology.getNurses().size();
             if (numberOfNurses>4){
                 throw new IllegalArgumentException("You can't create more than 4 nurses");
             }
@@ -32,7 +32,7 @@ public class AnesthesiologyChange extends EventChange {
         });
 
         apply((AnesthesiaAdded event)->{
-            var numberOfAnesthesias = anesthesiology.Anesthesias().size();
+            var numberOfAnesthesias = anesthesiology.getAnesthesias().size();
             if (numberOfAnesthesias>5){
                 throw new IllegalArgumentException("You can't create more than 5 anesthesias");
             }
