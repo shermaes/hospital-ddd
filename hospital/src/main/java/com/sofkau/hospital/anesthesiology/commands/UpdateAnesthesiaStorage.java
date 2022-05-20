@@ -2,29 +2,23 @@ package com.sofkau.hospital.anesthesiology.commands;
 
 import co.com.sofka.domain.generic.Command;
 import com.sofkau.hospital.anesthesiology.values.AnesthesiaID;
-import com.sofkau.hospital.anesthesiology.values.Brand;
 import com.sofkau.hospital.anesthesiology.values.Storage;
 
-public class AddAnesthesia extends Command  {
+public class UpdateAnesthesiaStorage extends Command {
+
     private final AnesthesiaID entityId;
     private final Storage storage;
-    private final Brand brand;
 
-    public AddAnesthesia(AnesthesiaID entityId, Storage expiryDate, Brand brand) {
+    public UpdateAnesthesiaStorage(AnesthesiaID entityId, Storage storage) {
         this.entityId = entityId;
         this.storage = storage;
-        this.brand = brand;
     }
 
     public AnesthesiaID getEntityId() {
         return entityId;
     }
 
-    public Storage getExpiryDate() {
+    public Storage getStorage() {
         return storage;
-    }
-
-    public Brand getBrand() {
-        return brand;
     }
 }

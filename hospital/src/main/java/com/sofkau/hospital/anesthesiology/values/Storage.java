@@ -4,19 +4,19 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class ExpiryDate implements ValueObject<String> {
+public class Storage implements ValueObject<Integer> {
 
-    private final String value;
+    private final Integer value;
 
-    public ExpiryDate(String value) {
+    public Storage(Integer value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
-            throw new IllegalArgumentException("The expiry date can not be empty");
+        if(this.value == 0) {
+            throw new IllegalArgumentException("The storage can not be empty");
         }
     }
 
     @Override
-    public String value() {
+    public Integer value() {
         return null;
     }
 
@@ -24,8 +24,8 @@ public class ExpiryDate implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ExpiryDate expiryDate = (ExpiryDate) o;
-        return value.equals(expiryDate.value);
+        Storage storage = (Storage) o;
+        return value.equals(storage.value);
     }
 
     @Override

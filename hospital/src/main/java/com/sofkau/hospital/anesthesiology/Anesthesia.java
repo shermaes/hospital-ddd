@@ -6,16 +6,16 @@ import com.sofkau.hospital.anesthesiology.values.*;
 import java.util.Objects;
 
 public class Anesthesia extends Entity<AnesthesiaID> {
-    private ExpiryDate expiryDate;
+    private Storage storage;
     private Brand brand;
-    public Anesthesia(AnesthesiaID entityId, ExpiryDate expiryDate, Brand brand ){
+    public Anesthesia(AnesthesiaID entityId, Storage storage, Brand brand ){
         super(entityId);
         this.brand = brand;
-        this.expiryDate =expiryDate;
+        this.storage =storage;
     }
     //getters
-    public ExpiryDate ExpiryDate() {
-        return expiryDate;
+    public Storage ExpiryDate() {
+        return storage;
     }
 
     public Brand Brand() {
@@ -23,10 +23,10 @@ public class Anesthesia extends Entity<AnesthesiaID> {
     }
 
     //behaviors
-    public void addExpiryDate(ExpiryDate expiryDate){
-        this.expiryDate = Objects.requireNonNull(expiryDate);
+    public void updateStorage(Storage storage){
+        this.storage = Objects.requireNonNull(storage);
     }
-    public void addBrand(Brand brand){
+    public void updateBrand(Brand brand){
         this.brand = Objects.requireNonNull(brand);
     }
 }

@@ -4,15 +4,15 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkau.hospital.anesthesiology.values.AnesthesiaID;
 
 import com.sofkau.hospital.anesthesiology.values.Brand;
-import com.sofkau.hospital.anesthesiology.values.ExpiryDate;
+import com.sofkau.hospital.anesthesiology.values.Storage;
 
 public class AnesthesiaAdded extends DomainEvent {
     //attributes, these are constants because they will never change, they were created in the past
-    private final ExpiryDate expiryDate;
+    private final Storage expiryDate;
     private final Brand brand;
     private final AnesthesiaID entityId;
 
-    public AnesthesiaAdded(AnesthesiaID entityId, ExpiryDate expiryDate, Brand brand ){
+    public AnesthesiaAdded(AnesthesiaID entityId, Storage expiryDate, Brand brand ){
         super("SherMaestre.anesthesiology.AnesthesiaAdded");
         this.brand = brand;
         this.expiryDate =expiryDate;
@@ -20,7 +20,7 @@ public class AnesthesiaAdded extends DomainEvent {
     }
     //getters
 
-    public ExpiryDate getExpiryDate() {
+    public Storage getExpiryDate() {
         return expiryDate;
     }
 

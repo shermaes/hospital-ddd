@@ -46,11 +46,11 @@ public void addNurse(NurseID entityId, Uniform uniform){
     Objects.requireNonNull(uniform);
     appendChange(new NurseAdded(entityId,uniform)).apply();
 }
-    public void addAnesthesia(AnesthesiaID entityId, ExpiryDate expiryDate, Brand brand ){
+    public void addAnesthesia(AnesthesiaID entityId, Storage storage, Brand brand ){
         Objects.requireNonNull(entityId);
-        Objects.requireNonNull(expiryDate);
+        Objects.requireNonNull(storage);
         Objects.requireNonNull(brand);
-        appendChange(new AnesthesiaAdded(entityId, expiryDate, brand)).apply();
+        appendChange(new AnesthesiaAdded(entityId, storage, brand)).apply();
     }
 
     public void changeANDirector(ANDirector anDirector) {
@@ -63,6 +63,10 @@ public void addNurse(NurseID entityId, Uniform uniform){
 
     public void changeNurseUniform(NurseID entityId, Uniform uniform){
         appendChange(new NurseUniformChanged(entityId, uniform)).apply();
+    }
+
+    public void updateAnesthesiaStorage(AnesthesiaID entityId, Storage storage){
+       appendChange( new AnesthesiaStorageUpdated(entityId, storage)).apply();
     }
 
     //getters
