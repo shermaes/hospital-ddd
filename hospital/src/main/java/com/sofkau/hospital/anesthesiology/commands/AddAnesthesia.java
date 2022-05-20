@@ -10,7 +10,7 @@ public class AddAnesthesia extends Command  {
     private final Storage storage;
     private final Brand brand;
 
-    public AddAnesthesia(AnesthesiaID entityId, Storage expiryDate, Brand brand) {
+    public AddAnesthesia(AnesthesiaID entityId, Storage storage, Brand brand) {
         this.entityId = entityId;
         this.storage = storage;
         this.brand = brand;
