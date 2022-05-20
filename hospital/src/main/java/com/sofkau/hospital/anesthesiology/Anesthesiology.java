@@ -4,6 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkau.hospital.anesthesiology.events.AnesthesiologistAdded;
 import com.sofkau.hospital.anesthesiology.events.AnesthesiologyCreated;
+import com.sofkau.hospital.anesthesiology.events.NurseAdded;
 import com.sofkau.hospital.anesthesiology.values.*;
 
 import java.util.HashSet;
@@ -39,10 +40,14 @@ public void addAnesthesiologist(AnesthesiologistID entityId, YearsOfExperience y
     Objects.requireNonNull(entityId);
     Objects.requireNonNull(yearsOfExperience);
     Objects.requireNonNull(typeOfAnesthesia);
-    appendChange(new AnesthesiologistAdded(entityId,yearsOfExperience,typeOfAnesthesia));
+    appendChange(new AnesthesiologistAdded(entityId,yearsOfExperience,typeOfAnesthesia)).apply();
     //here we append this change in order to create the event / applying that event into this aggregate
 }
-
+public void addNurse(NurseID entityId, Uniform uniform){
+    Objects.requireNonNull(entityId);
+    Objects.requireNonNull(uniform);
+    appendChange(new NurseAdded(entityId,uniform)).apply();
+}
     //getters
     public ANDirector AnDirector() {
         return anDirector;

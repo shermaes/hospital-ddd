@@ -1,4 +1,21 @@
 package com.sofkau.hospital.anesthesiology;
 
-public class Nurse {
+import co.com.sofka.domain.generic.Entity;
+import com.sofkau.hospital.anesthesiology.values.NurseID;
+import com.sofkau.hospital.anesthesiology.values.Uniform;
+
+public class Nurse extends Entity<NurseID> {
+    //VO
+    private Uniform uniform;
+
+    //Constructor
+    public Nurse(NurseID entityId, Uniform uniform) {
+        super(entityId);
+        this.uniform = uniform;
+    }
+
+    //getter
+    public Uniform Uniform() {
+        return uniform;
+    }
 }
