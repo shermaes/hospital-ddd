@@ -57,8 +57,12 @@ public void addNurse(NurseID entityId, Uniform uniform){
         appendChange(new ANDirectorChanged(anDirector)).apply();
     }
 
-    public void updateAnesthesiologistYearsOfExperience(AnesthesiologistID anesthesiologistID, YearsOfExperience yearsOfExperience) {
+    public void updateAnesthesiologistYearsOfExperience(AnesthesiologistID entityId, YearsOfExperience yearsOfExperience) {
         appendChange(new AnesthesiologistYearsOfExperienceUpdated(entityId, yearsOfExperience)).apply();
+    }
+
+    public void changeNurseUniform(NurseID entityId, Uniform uniform){
+        appendChange(new NurseUniformChanged(entityId, uniform)).apply();
     }
 
     //getters

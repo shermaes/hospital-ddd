@@ -42,12 +42,18 @@ public class AnesthesiologyChange extends EventChange {
         apply((ANDirectorChanged event) -> anesthesiology.anDirector = event.getAnDirector());
 
         apply((AnesthesiologistYearsOfExperienceUpdated event) -> {
-            //getting the instructor that im going to change
+            //getting the anesthesiologist that im going to change
             var function = anesthesiology.getAnesthesiologistById(event.getEntityId())
                         .orElseThrow(() -> new IllegalArgumentException("We did not find any Anesthesiologist"));
             function.updateYearsOfExperience(event.getYearsOfExperience());
         });
 
+        apply((NurseUniformChanged event) -> {
+            //getting the nurse that im going to change
+            var function = anesthesiology.getNurseById(event.getEntityId())
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Nurse"));
+            function.changeUniform(event.getUniform());
+        });
     }
 
 }
