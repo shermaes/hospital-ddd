@@ -5,9 +5,9 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkau.hospital.anesthesiology.events.*;
 import com.sofkau.hospital.anesthesiology.values.*;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Anesthesiology extends AggregateEvent<AnesthesiologyID> {
@@ -57,6 +57,10 @@ public void addNurse(NurseID entityId, Uniform uniform){
         appendChange(new ANDirectorChanged(anDirector)).apply();
     }
 
+    public void updateAnesthesiologistYearsOfExperience(AnesthesiologistID anesthesiologistID, YearsOfExperience yearsOfExperience) {
+        appendChange(new AnesthesiologistYearsOfExperienceUpdated(entityId, yearsOfExperience)).apply();
+    }
+
     //getters
     public ANDirector AnDirector() {
         return anDirector;
@@ -72,5 +76,27 @@ public void addNurse(NurseID entityId, Uniform uniform){
 
     public Set<Anesthesia> Anesthesias() {
         return anesthesias;
+    }
+
+    //this will pick where im going to display the changes
+    protected Optional<Anesthesiologist> getAnesthesiologistById(AnesthesiologistID entityId) {
+        return Anesthesiologists()
+                .stream()
+                .filter(anesthesiologist -> anesthesiologist.identity().equals(entityId))
+                .findFirst();
+    }
+
+    protected Optional<Nurse> getNurseById(NurseID entityId) {
+        return Nurses()
+                .stream()
+                .filter(nurse -> nurse.identity().equals(entityId))
+                .findFirst();
+    }
+
+    protected Optional<Anesthesia> getAnesthesiaById(AnesthesiaID entityId) {
+        return Anesthesias()
+                .stream()
+                .filter(nurse -> nurse.identity().equals(entityId))
+                .findFirst();
     }
 }

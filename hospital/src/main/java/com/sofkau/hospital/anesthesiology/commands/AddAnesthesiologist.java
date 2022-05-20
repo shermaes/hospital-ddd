@@ -15,7 +15,6 @@ public class AddAnesthesiologist extends Command {
         this.yearsOfExperience = yearsOfExperience;
         this.typeOfAnesthesia = typeOfAnesthesia;
     }
-
     public AnesthesiologistID getEntityId() {
         return entityId;
     }
