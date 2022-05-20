@@ -5,7 +5,6 @@ import com.sofkau.hospital.surgery.values.MedicalStudentID;
 import com.sofkau.hospital.surgery.values.Year;
 
 public class UpdateMedicalStudentYear extends Command {
-
     private final MedicalStudentID entityId;
     private final Year year;
 

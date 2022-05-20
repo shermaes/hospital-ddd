@@ -10,6 +10,7 @@ import java.util.Objects;
 public class Instrumentalist extends Entity<InstrumentalistID> {
     private HeadSurgeon headSurgeon;
     private Area area;
+
     public Instrumentalist(InstrumentalistID entityId, HeadSurgeon headSurgeon, Area area) {
         super(entityId);
         this.headSurgeon = headSurgeon;
@@ -27,11 +28,11 @@ public class Instrumentalist extends Entity<InstrumentalistID> {
     }
 
     //behaviors
-    public void changeHeadSurgeon(HeadSurgeon headSurgeon){
+    public void changeHeadSurgeon(HeadSurgeon headSurgeon) {
         this.headSurgeon = Objects.requireNonNull(headSurgeon);
     }
 
-    public void updateArea(Area area){
+    public void updateArea(Area area) {
         this.area = Objects.requireNonNull(area);
     }
 }

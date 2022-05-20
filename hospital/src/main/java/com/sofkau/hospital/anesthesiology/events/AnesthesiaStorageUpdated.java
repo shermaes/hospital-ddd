@@ -5,7 +5,6 @@ import com.sofkau.hospital.anesthesiology.values.AnesthesiaID;
 import com.sofkau.hospital.anesthesiology.values.Storage;
 
 
-
 public class AnesthesiaStorageUpdated extends DomainEvent {
     private final AnesthesiaID entityId;
     private final Storage storage;

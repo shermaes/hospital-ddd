@@ -21,7 +21,7 @@ public class Surgeon extends Entity<SurgeonID> {
     }
 
     //behavior
-    public void changeSurgeryRoom(SurgeryRoom surgeryRoom){
+    public void changeSurgeryRoom(SurgeryRoom surgeryRoom) {
         this.surgeryRoom = Objects.requireNonNull(surgeryRoom);
     }
 }

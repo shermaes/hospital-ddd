@@ -5,7 +5,6 @@ import com.sofkau.hospital.surgery.values.SurgeonID;
 import com.sofkau.hospital.surgery.values.SurgeryRoom;
 
 public class ChangeSurgeonSurgeryRoom extends Command {
-
     private final SurgeonID entityId;
     private final SurgeryRoom surgeryRoom;
 

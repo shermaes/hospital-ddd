@@ -7,9 +7,9 @@ public class AnesthesiologyCreated extends DomainEvent {
 
     private final ANDirector anDirector;
 
-    public AnesthesiologyCreated(ANDirector anDirector){
+    public AnesthesiologyCreated(ANDirector anDirector) {
         super("shermaestre.anesthesiology.anesthesiologycreated");
-        this.anDirector= anDirector;
+        this.anDirector = anDirector;
 
     }
 

@@ -4,14 +4,14 @@ import co.com.sofka.domain.generic.Identity;
 
 public class AnesthesiologistID extends Identity {
     //constructors
-        private AnesthesiologistID(String vvid){
-            super(vvid);
-        }
+    private AnesthesiologistID(String vvid) {
+        super(vvid);
+    }
 
-        public AnesthesiologistID(){
-        }
+    public AnesthesiologistID() {
+    }
 
-        public static AnesthesiologistID of(String id){
-            return new AnesthesiologistID(id);
-        }
+    public static AnesthesiologistID of(String id) {
+        return new AnesthesiologistID(id);
+    }
 }

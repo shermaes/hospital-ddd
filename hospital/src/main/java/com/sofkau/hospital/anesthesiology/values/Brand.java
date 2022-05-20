@@ -10,7 +10,7 @@ public class Brand implements ValueObject<String> {
 
     public Brand(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("The brand name can not be empty");
         }
     }

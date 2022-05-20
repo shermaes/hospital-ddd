@@ -10,7 +10,7 @@ public class Storage implements ValueObject<Integer> {
 
     public Storage(Integer value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value == 0) {
+        if (this.value == 0) {
             throw new IllegalArgumentException("The storage can not be empty");
         }
     }

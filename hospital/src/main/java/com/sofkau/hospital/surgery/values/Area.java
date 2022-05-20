@@ -1,6 +1,7 @@
 package com.sofkau.hospital.surgery.values;
 
 import co.com.sofka.domain.generic.ValueObject;
+
 import java.util.Objects;
 
 public class Area implements ValueObject<String> {
@@ -9,7 +10,7 @@ public class Area implements ValueObject<String> {
 
     public Area(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("The area can not be empty");
         }
     }
@@ -18,6 +19,7 @@ public class Area implements ValueObject<String> {
     public String value() {
         return null;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

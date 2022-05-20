@@ -6,9 +6,10 @@ import java.util.Objects;
 
 public class TypeOfAnesthesia implements ValueObject<String> {
     private final String value;
+
     public TypeOfAnesthesia(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("The type of anesthesia can not  can not be empty");
         }
     }
@@ -25,6 +26,7 @@ public class TypeOfAnesthesia implements ValueObject<String> {
         TypeOfAnesthesia typeOfAnesthesia = (TypeOfAnesthesia) o;
         return value.equals(typeOfAnesthesia.value);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(value);

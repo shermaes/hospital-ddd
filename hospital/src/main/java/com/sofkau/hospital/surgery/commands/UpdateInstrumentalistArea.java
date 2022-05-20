@@ -5,7 +5,6 @@ import com.sofkau.hospital.surgery.values.Area;
 import com.sofkau.hospital.surgery.values.InstrumentalistID;
 
 public class UpdateInstrumentalistArea extends Command {
-
     private final InstrumentalistID entityId;
     private final Area area;
 

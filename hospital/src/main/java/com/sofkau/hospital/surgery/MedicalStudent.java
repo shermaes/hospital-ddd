@@ -28,11 +28,11 @@ public class MedicalStudent extends Entity<MedicalStudentID> {
     }
 
     //behaviors
-    public void updateYear(Year year){
+    public void updateYear(Year year) {
         this.year = Objects.requireNonNull(year);
     }
 
-    public void updateHeadDoctor(HeadDoctor headDoctor){
+    public void updateHeadDoctor(HeadDoctor headDoctor) {
         this.headDoctor = Objects.requireNonNull(headDoctor);
     }
 }

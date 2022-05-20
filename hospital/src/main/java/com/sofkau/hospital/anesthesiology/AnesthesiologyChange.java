@@ -15,25 +15,25 @@ public class AnesthesiologyChange extends EventChange {
             anesthesiology.anesthesias = new HashSet<>();
         });
 
-        apply((AnesthesiologistAdded event)->{
+        apply((AnesthesiologistAdded event) -> {
             var numberOfAnesthesiologists = anesthesiology.getAnesthesiologists().size();
-            if (numberOfAnesthesiologists>5){
+            if (numberOfAnesthesiologists > 5) {
                 throw new IllegalArgumentException("You can't create more than 5 anesthesiologists");
             }
             anesthesiology.anesthesiologists.add(new Anesthesiologist(event.getEntityId(), event.getYearsOfExperience(), event.getTypeOfAnesthesia()));
         });
 
-        apply((NurseAdded event)->{
+        apply((NurseAdded event) -> {
             var numberOfNurses = anesthesiology.getNurses().size();
-            if (numberOfNurses>4){
+            if (numberOfNurses > 4) {
                 throw new IllegalArgumentException("You can't create more than 4 nurses");
             }
             anesthesiology.nurses.add(new Nurse(event.getEntityId(), event.getUniform()));
         });
 
-        apply((AnesthesiaAdded event)->{
+        apply((AnesthesiaAdded event) -> {
             var numberOfAnesthesias = anesthesiology.getAnesthesias().size();
-            if (numberOfAnesthesias>5){
+            if (numberOfAnesthesias > 5) {
                 throw new IllegalArgumentException("You can't create more than 5 anesthesias");
             }
             anesthesiology.anesthesias.add(new Anesthesia(event.getEntityId(), event.getExpiryDate(), event.getBrand()));
@@ -44,7 +44,7 @@ public class AnesthesiologyChange extends EventChange {
         apply((AnesthesiologistYearsOfExperienceUpdated event) -> {
             //getting the anesthesiologist that im going to change
             var function = anesthesiology.getAnesthesiologistById(event.getEntityId())
-                        .orElseThrow(() -> new IllegalArgumentException("We did not find any Anesthesiologist"));
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Anesthesiologist"));
             function.updateYearsOfExperience(event.getYearsOfExperience());
         });
 

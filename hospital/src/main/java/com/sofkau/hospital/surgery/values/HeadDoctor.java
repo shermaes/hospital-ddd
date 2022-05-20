@@ -6,12 +6,11 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class HeadDoctor implements ValueObject<String> {
-
     private final String value;
 
     public HeadDoctor(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("The Head Doctor can not be empty");
         }
     }
@@ -20,6 +19,7 @@ public class HeadDoctor implements ValueObject<String> {
     public String value() {
         return null;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -29,12 +29,12 @@ public class Anesthesiologist extends Entity<AnesthesiologistID> {
     }
 
     //behaviors
- public void updateYearsOfExperience(YearsOfExperience yearsOfExperience){
+    public void updateYearsOfExperience(YearsOfExperience yearsOfExperience) {
         this.yearsOfExperience = Objects.requireNonNull(yearsOfExperience);
- }
+    }
 
- public void updateTypeOfAnesthesia(TypeOfAnesthesia typeOfAnesthesia){
+    public void updateTypeOfAnesthesia(TypeOfAnesthesia typeOfAnesthesia) {
         this.typeOfAnesthesia = Objects.requireNonNull(typeOfAnesthesia);
- }
+    }
 
 }

@@ -5,15 +5,17 @@ import com.sofkau.hospital.anesthesiology.values.AnesthesiaID;
 
 public class SurgeonID extends Identity {
     //constructors
-    private SurgeonID(String vvid){
+    private SurgeonID(String vvid) {
         super(vvid);
     }
 
-    public SurgeonID(){
+    public SurgeonID() {
     }
 
-    public static SurgeonID of(String id){
+    public static SurgeonID of(String id) {
         return new SurgeonID(id);
-    }{
+    }
+
+    {
     }
 }

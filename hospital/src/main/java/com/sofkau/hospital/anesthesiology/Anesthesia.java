@@ -8,11 +8,13 @@ import java.util.Objects;
 public class Anesthesia extends Entity<AnesthesiaID> {
     private Storage storage;
     private Brand brand;
-    public Anesthesia(AnesthesiaID entityId, Storage storage, Brand brand ){
+
+    public Anesthesia(AnesthesiaID entityId, Storage storage, Brand brand) {
         super(entityId);
         this.brand = brand;
-        this.storage =storage;
+        this.storage = storage;
     }
+
     //getters
     public Storage ExpiryDate() {
         return storage;
@@ -23,10 +25,11 @@ public class Anesthesia extends Entity<AnesthesiaID> {
     }
 
     //behaviors
-    public void updateStorage(Storage storage){
+    public void updateStorage(Storage storage) {
         this.storage = Objects.requireNonNull(storage);
     }
-    public void updateBrand(Brand brand){
+
+    public void updateBrand(Brand brand) {
         this.brand = Objects.requireNonNull(brand);
     }
 }

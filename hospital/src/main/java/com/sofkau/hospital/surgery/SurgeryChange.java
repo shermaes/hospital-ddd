@@ -16,25 +16,25 @@ public class SurgeryChange extends EventChange {
             surgery.medicalStudents = new HashSet<>();
         });
 
-        apply((SurgeonAdded event)->{
+        apply((SurgeonAdded event) -> {
             var numberOfSurgeons = surgery.getSurgeons().size();
-            if (numberOfSurgeons>10){
+            if (numberOfSurgeons > 10) {
                 throw new IllegalArgumentException("You can't create more than 10 surgeons");
             }
             surgery.surgeons.add(new Surgeon(event.getEntityId(), event.getSurgeryRoom()));
         });
 
-        apply((InstrumentalistAdded event)->{
+        apply((InstrumentalistAdded event) -> {
             var numberOfInstrumentalists = surgery.getInstrumentalists().size();
-            if (numberOfInstrumentalists>10){
+            if (numberOfInstrumentalists > 10) {
                 throw new IllegalArgumentException("You can't create more than 10 instrumentalists");
             }
             surgery.instrumentalists.add(new Instrumentalist(event.getEntityId(), event.getHeadSurgeon(), event.getArea()));
         });
 
-        apply((MedicalStudentAdded event)->{
+        apply((MedicalStudentAdded event) -> {
             var numberOfMedicalStudents = surgery.getMedicalStudents().size();
-            if (numberOfMedicalStudents>4){
+            if (numberOfMedicalStudents > 4) {
                 throw new IllegalArgumentException("You can't create more than 4 medical students");
             }
             surgery.medicalStudents.add(new MedicalStudent(event.getEntityId(), event.getHeadDoctor(), event.getYear()));
@@ -46,7 +46,7 @@ public class SurgeryChange extends EventChange {
         apply((InstrumentalistAreaUpdated event) -> {
             //getting the instrumentalist that im going to change
             var function = surgery.getInstrumentalistById((event.getEntityId()))
-                        .orElseThrow(() -> new IllegalArgumentException("We did not find any Instrumentalist"));
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Instrumentalist"));
             function.updateArea(event.getArea());
         });
 
@@ -78,4 +78,5 @@ public class SurgeryChange extends EventChange {
             function.changeSurgeryRoom(event.getSurgeryRoom());
         });
 
-}}
+    }
+}

@@ -6,10 +6,10 @@ import com.sofkau.hospital.anesthesiology.values.AnesthesiologistID;
 import com.sofkau.hospital.anesthesiology.values.TypeOfAnesthesia;
 
 public class AnesthesiologistTypeOfAnesthesiaUpdated extends DomainEvent {
-    private final AnesthesiaID entityId;
+    private final AnesthesiologistID entityId;
     private final TypeOfAnesthesia typeOfAnesthesia;
 
-    public AnesthesiologistTypeOfAnesthesiaUpdated(AnesthesiaID entityId, TypeOfAnesthesia typeOfAnesthesia) {
+    public AnesthesiologistTypeOfAnesthesiaUpdated(AnesthesiologistID entityId, TypeOfAnesthesia typeOfAnesthesia) {
         super("SherMaestre.anesthesiology.AnesthesiologistTypeOfAnesthesiaUpdated");
         this.entityId = entityId;
         this.typeOfAnesthesia = typeOfAnesthesia;

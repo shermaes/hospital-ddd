@@ -22,31 +22,34 @@ public class Anesthesiology extends AggregateEvent<AnesthesiologyID> {
         super(entityId);
         appendChange(new AnesthesiologyCreated(anDirector)).apply();
     }
-    private Anesthesiology(AnesthesiologyID entityId){
+
+    private Anesthesiology(AnesthesiologyID entityId) {
         super(entityId);
         subscribe(new AnesthesiologyChange(this));
     }
 
-    public static Anesthesiology from(AnesthesiologyID entityId, List<DomainEvent> events){
+    public static Anesthesiology from(AnesthesiologyID entityId, List<DomainEvent> events) {
         Anesthesiology anesthesiology = new Anesthesiology(entityId);
         events.forEach((event) -> anesthesiology.applyEvent(event));
         return anesthesiology;
     }
 
     //commands
-public void addAnesthesiologist(AnesthesiologistID entityId, YearsOfExperience yearsOfExperience, TypeOfAnesthesia typeOfAnesthesia){
-    Objects.requireNonNull(entityId);
-    Objects.requireNonNull(yearsOfExperience);
-    Objects.requireNonNull(typeOfAnesthesia);
-    appendChange(new AnesthesiologistAdded(entityId,yearsOfExperience,typeOfAnesthesia)).apply();
-    //here we append this change in order to create the event / applying that event into this aggregate
-}
-public void addNurse(NurseID entityId, Uniform uniform){
-    Objects.requireNonNull(entityId);
-    Objects.requireNonNull(uniform);
-    appendChange(new NurseAdded(entityId,uniform)).apply();
-}
-    public void addAnesthesia(AnesthesiaID entityId, Storage storage, Brand brand ){
+    public void addAnesthesiologist(AnesthesiologistID entityId, YearsOfExperience yearsOfExperience, TypeOfAnesthesia typeOfAnesthesia) {
+        Objects.requireNonNull(entityId);
+        Objects.requireNonNull(yearsOfExperience);
+        Objects.requireNonNull(typeOfAnesthesia);
+        appendChange(new AnesthesiologistAdded(entityId, yearsOfExperience, typeOfAnesthesia)).apply();
+        //here we append this change in order to create the event / applying that event into this aggregate
+    }
+
+    public void addNurse(NurseID entityId, Uniform uniform) {
+        Objects.requireNonNull(entityId);
+        Objects.requireNonNull(uniform);
+        appendChange(new NurseAdded(entityId, uniform)).apply();
+    }
+
+    public void addAnesthesia(AnesthesiaID entityId, Storage storage, Brand brand) {
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(storage);
         Objects.requireNonNull(brand);
@@ -61,19 +64,19 @@ public void addNurse(NurseID entityId, Uniform uniform){
         appendChange(new AnesthesiologistYearsOfExperienceUpdated(entityId, yearsOfExperience)).apply();
     }
 
-    public void changeNurseUniform(NurseID entityId, Uniform uniform){
+    public void changeNurseUniform(NurseID entityId, Uniform uniform) {
         appendChange(new NurseUniformChanged(entityId, uniform)).apply();
     }
 
-    public void updateAnesthesiaStorage(AnesthesiaID entityId, Storage storage){
-       appendChange( new AnesthesiaStorageUpdated(entityId, storage)).apply();
+    public void updateAnesthesiaStorage(AnesthesiaID entityId, Storage storage) {
+        appendChange(new AnesthesiaStorageUpdated(entityId, storage)).apply();
     }
 
-    public void updateAnesthesiaBrand(AnesthesiaID entityId, Brand brand){
-        appendChange( new AnesthesiaBrandUpdated(entityId, brand)).apply();
+    public void updateAnesthesiaBrand(AnesthesiaID entityId, Brand brand) {
+        appendChange(new AnesthesiaBrandUpdated(entityId, brand)).apply();
     }
 
-    public void updatedAnesthesiologistTypeOfAnesthesia(AnesthesiaID entityId, TypeOfAnesthesia typeOfAnesthesia){
+    public void updatedAnesthesiologistTypeOfAnesthesia(AnesthesiologistID entityId, TypeOfAnesthesia typeOfAnesthesia) {
         appendChange(new AnesthesiologistTypeOfAnesthesiaUpdated(entityId, typeOfAnesthesia)).apply();
     }
 

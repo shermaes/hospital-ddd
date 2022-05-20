@@ -10,7 +10,7 @@ public class OperatingRoom implements ValueObject<String> {
 
     public OperatingRoom(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("The Operating Room can not be empty");
         }
     }
@@ -19,6 +19,7 @@ public class OperatingRoom implements ValueObject<String> {
     public String value() {
         return null;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

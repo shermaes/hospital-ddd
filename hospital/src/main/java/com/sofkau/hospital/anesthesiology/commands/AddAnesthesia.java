@@ -5,7 +5,7 @@ import com.sofkau.hospital.anesthesiology.values.AnesthesiaID;
 import com.sofkau.hospital.anesthesiology.values.Brand;
 import com.sofkau.hospital.anesthesiology.values.Storage;
 
-public class AddAnesthesia extends Command  {
+public class AddAnesthesia extends Command {
     private final AnesthesiaID entityId;
     private final Storage storage;
     private final Brand brand;

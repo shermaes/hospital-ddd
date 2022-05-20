@@ -4,14 +4,14 @@ import co.com.sofka.domain.generic.Identity;
 
 public class NurseID extends Identity {
 
-    public NurseID(){
+    public NurseID() {
     }
 
-    public NurseID(String vvid){
+    public NurseID(String vvid) {
         super(vvid);
     }
 
-    public static AnesthesiologyID of(String id){
+    public static AnesthesiologyID of(String id) {
         return new AnesthesiologyID(id);
     }
 

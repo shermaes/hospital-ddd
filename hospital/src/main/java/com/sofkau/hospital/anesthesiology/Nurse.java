@@ -23,7 +23,7 @@ public class Nurse extends Entity<NurseID> {
     }
 
     //behaviors
-    public void changeUniform(Uniform uniform){
+    public void changeUniform(Uniform uniform) {
         this.uniform = Objects.requireNonNull(uniform);
     }
 }

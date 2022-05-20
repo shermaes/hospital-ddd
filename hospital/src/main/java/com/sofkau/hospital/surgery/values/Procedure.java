@@ -10,7 +10,7 @@ public class Procedure implements ValueObject<String> {
 
     public Procedure(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("The procedure can not be empty");
         }
     }
@@ -20,6 +20,7 @@ public class Procedure implements ValueObject<String> {
     public String value() {
         return null;
     }
+
     //Creates and returns a copy of this object.
 // The precise meaning of "copy" may depend on the class of the object.
     @Override
@@ -29,6 +30,7 @@ public class Procedure implements ValueObject<String> {
         Procedure procedure = (Procedure) o;
         return value.equals(procedure.value);
     }
+
     //Indicates whether some other object is "equal to" this one.
     @Override
     public int hashCode() {

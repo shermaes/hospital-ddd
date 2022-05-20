@@ -4,7 +4,6 @@ import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkau.hospital.surgery.values.Procedure;
 
 
-
 public class ProcedureChanged extends DomainEvent {
 
     private final Procedure procedure;

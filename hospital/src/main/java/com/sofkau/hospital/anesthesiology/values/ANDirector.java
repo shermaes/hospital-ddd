@@ -10,7 +10,7 @@ public class ANDirector implements ValueObject<String> {
 
     public ANDirector(String value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.isBlank()) {
+        if (this.value.isBlank()) {
             throw new IllegalArgumentException("The director name can not be empty");
         }
 
@@ -30,6 +30,7 @@ public class ANDirector implements ValueObject<String> {
         ANDirector anDirector = (ANDirector) o;
         return value.equals(anDirector.value);
     }
+
     //Indicates whether some other object is "equal to" this one.
     @Override
     public int hashCode() {

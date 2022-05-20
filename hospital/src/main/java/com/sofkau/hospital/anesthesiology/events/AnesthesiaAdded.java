@@ -12,11 +12,11 @@ public class AnesthesiaAdded extends DomainEvent {
     private final Brand brand;
     private final AnesthesiaID entityId;
 
-    public AnesthesiaAdded(AnesthesiaID entityId, Storage expiryDate, Brand brand ){
+    public AnesthesiaAdded(AnesthesiaID entityId, Storage expiryDate, Brand brand) {
         super("SherMaestre.anesthesiology.AnesthesiaAdded");
         this.brand = brand;
-        this.expiryDate =expiryDate;
-        this.entityId =entityId;
+        this.expiryDate = expiryDate;
+        this.entityId = entityId;
     }
     //getters
 
