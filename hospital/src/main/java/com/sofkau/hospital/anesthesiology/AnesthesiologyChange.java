@@ -1,6 +1,7 @@
 package com.sofkau.hospital.anesthesiology;
 
 import co.com.sofka.domain.generic.EventChange;
+import com.sofkau.hospital.anesthesiology.events.AnesthesiaAdded;
 import com.sofkau.hospital.anesthesiology.events.AnesthesiologistAdded;
 import com.sofkau.hospital.anesthesiology.events.AnesthesiologyCreated;
 import com.sofkau.hospital.anesthesiology.events.NurseAdded;
@@ -31,6 +32,14 @@ public class AnesthesiologyChange extends EventChange {
                 throw new IllegalArgumentException("You can't create more than 4 nurses");
             }
             anesthesiology.nurses.add(new Nurse(event.EntityId(), event.Uniform()));
+        });
+
+        apply((AnesthesiaAdded event)->{
+            var numberOfAnesthesias = anesthesiology.Anesthesias().size();
+            if (numberOfAnesthesias>5){
+                throw new IllegalArgumentException("You can't create more than 4 nurses");
+            }
+            anesthesiology.anesthesias.add(new Anesthesia(event.EntityId(), event.ExpiryDate(), event.Brand()));
         });
     }
 

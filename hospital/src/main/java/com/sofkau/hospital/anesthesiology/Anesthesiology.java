@@ -2,6 +2,7 @@ package com.sofkau.hospital.anesthesiology;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import com.sofkau.hospital.anesthesiology.events.AnesthesiaAdded;
 import com.sofkau.hospital.anesthesiology.events.AnesthesiologistAdded;
 import com.sofkau.hospital.anesthesiology.events.AnesthesiologyCreated;
 import com.sofkau.hospital.anesthesiology.events.NurseAdded;
@@ -48,6 +49,12 @@ public void addNurse(NurseID entityId, Uniform uniform){
     Objects.requireNonNull(uniform);
     appendChange(new NurseAdded(entityId,uniform)).apply();
 }
+    public void addAnesthesia(AnesthesiaID entityId, ExpiryDate expiryDate, Brand brand ){
+        Objects.requireNonNull(entityId);
+        Objects.requireNonNull(expiryDate);
+        Objects.requireNonNull(brand);
+        appendChange(new AnesthesiaAdded(entityId, expiryDate, brand)).apply();
+    }
     //getters
     public ANDirector AnDirector() {
         return anDirector;
