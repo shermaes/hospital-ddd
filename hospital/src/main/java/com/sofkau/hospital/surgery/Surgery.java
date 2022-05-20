@@ -2,10 +2,12 @@ package com.sofkau.hospital.surgery;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.sofkau.hospital.surgery.events.InstrumentalistAdded;
-import com.sofkau.hospital.surgery.events.MedicalStudentAdded;
-import com.sofkau.hospital.surgery.events.SurgeonAdded;
-import com.sofkau.hospital.surgery.events.SurgeryCreated;
+import com.sofkau.hospital.anesthesiology.events.ANDirectorChanged;
+import com.sofkau.hospital.anesthesiology.events.AnesthesiologistYearsOfExperienceUpdated;
+import com.sofkau.hospital.anesthesiology.values.ANDirector;
+import com.sofkau.hospital.anesthesiology.values.AnesthesiologistID;
+import com.sofkau.hospital.anesthesiology.values.YearsOfExperience;
+import com.sofkau.hospital.surgery.events.*;
 import com.sofkau.hospital.surgery.values.*;
 
 import java.util.List;
@@ -57,6 +59,27 @@ public class Surgery extends AggregateEvent<SurgeryID> {
         appendChange(new MedicalStudentAdded(entityId, headDoctor, year)).apply();
     }
 
+    public void changeProcedure(Procedure procedure) {
+        appendChange(new ProcedureChanged(procedure)).apply();
+    }
+
+    public void updateInstrumentalistArea(InstrumentalistID entityId, Area area) {
+        appendChange(new InstrumentalistAreaUpdated(entityId, area)).apply();
+    }
+    public void changeInstrumentalistHeadSurgeon(InstrumentalistID entityId, HeadSurgeon headSurgeon) {
+        appendChange(new InstrumentalistHeadSurgeonChanged(entityId, headSurgeon)).apply();
+    }
+    public void updateMedicalStudentHeadDoctor(MedicalStudentID entityId, HeadDoctor headDoctor){
+        appendChange(new MedicalStudentHeadDoctorUpdated(entityId, headDoctor)).apply();
+    }
+    public void updateMedicalStudentYear(MedicalStudentID entityId, Year year){
+        appendChange(new MedicalStudentYearUpdated(entityId, year)).apply();
+    }
+
+    public void changeSurgeonSurgeryRoom(SurgeonID entityId, SurgeryRoom surgeryRoom){
+        appendChange(new SurgeonSurgeryRoomChanged(entityId, surgeryRoom)).apply();
+    }
+
     //getters
     public Procedure getProcedure() {
         return procedure;
@@ -74,7 +97,27 @@ public class Surgery extends AggregateEvent<SurgeryID> {
         return medicalStudents;
     }
 
+    //this will pick where im going to display the changes
+    protected Optional<Surgeon> getSurgeonById(SurgeonID entityId) {
+        return getSurgeons()
+                .stream()
+                .filter(surgeon -> surgeon.identity().equals(entityId))
+                .findFirst();
+    }
 
+    protected Optional<Instrumentalist> getInstrumentalistById(InstrumentalistID entityId) {
+        return getInstrumentalists()
+                .stream()
+                .filter(instrumentalist -> instrumentalist.identity().equals(entityId))
+                .findFirst();
+    }
+
+    protected Optional<MedicalStudent> getMedicalStudentById(MedicalStudentID entityId) {
+        return getMedicalStudents()
+                .stream()
+                .filter(nurse -> nurse.identity().equals(entityId))
+                .findFirst();
+    }
 
 
 }

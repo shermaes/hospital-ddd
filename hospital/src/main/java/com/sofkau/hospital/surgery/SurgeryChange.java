@@ -1,10 +1,7 @@
 package com.sofkau.hospital.surgery;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.sofkau.hospital.surgery.events.InstrumentalistAdded;
-import com.sofkau.hospital.surgery.events.MedicalStudentAdded;
-import com.sofkau.hospital.surgery.events.SurgeonAdded;
-import com.sofkau.hospital.surgery.events.SurgeryCreated;
+import com.sofkau.hospital.surgery.events.*;
 
 import java.util.HashSet;
 
@@ -43,6 +40,42 @@ public class SurgeryChange extends EventChange {
             surgery.medicalStudents.add(new MedicalStudent(event.getEntityId(), event.getHeadDoctor(), event.getYear()));
         });
 
-        }
+        apply((ProcedureChanged event) -> surgery.procedure = event.getProcedure());
 
-}
+
+        apply((InstrumentalistAreaUpdated event) -> {
+            //getting the instrumentalist that im going to change
+            var function = surgery.getInstrumentalistById((event.getEntityId()))
+                        .orElseThrow(() -> new IllegalArgumentException("We did not find any Instrumentalist"));
+            function.updateArea(event.getArea());
+        });
+
+        apply((InstrumentalistHeadSurgeonChanged event) -> {
+            //getting the instrumentalist that im going to change
+            var function = surgery.getInstrumentalistById((event.getEntityId()))
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Instrumentalist"));
+            function.changeHeadSurgeon(event.getHeadSurgeon());
+        });
+
+        apply((MedicalStudentHeadDoctorUpdated event) -> {
+            //getting the instrumentalist that im going to change
+            var function = surgery.getMedicalStudentById(event.getEntityId())
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Medical Student"));
+            function.updateHeadDoctor(event.getHeadDoctor());
+        });
+
+        apply((MedicalStudentYearUpdated event) -> {
+            //getting the instrumentalist that im going to change
+            var function = surgery.getMedicalStudentById(event.getEntityId())
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Medical Student"));
+            function.updateYear(event.getYear());
+        });
+
+        apply((SurgeonSurgeryRoomChanged event) -> {
+            //getting the instrumentalist that im going to change
+            var function = surgery.getSurgeonById(event.getEntityId())
+                    .orElseThrow(() -> new IllegalArgumentException("We did not find any Surgeon"));
+            function.changeSurgeryRoom(event.getSurgeryRoom());
+        });
+
+}}
