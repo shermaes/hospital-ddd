@@ -7,6 +7,7 @@ import com.sofkau.hospital.anesthesiology.values.Brand;
 import com.sofkau.hospital.anesthesiology.values.ExpiryDate;
 
 public class AnesthesiaAdded extends DomainEvent {
+    //attributes, these are constants because they will never change, they were created in the past
     private final ExpiryDate expiryDate;
     private final Brand brand;
     private final AnesthesiaID entityId;
@@ -19,15 +20,15 @@ public class AnesthesiaAdded extends DomainEvent {
     }
     //getters
 
-    public ExpiryDate ExpiryDate() {
+    public ExpiryDate getExpiryDate() {
         return expiryDate;
     }
 
-    public Brand Brand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public AnesthesiaID EntityId() {
+    public AnesthesiaID getEntityId() {
         return entityId;
     }
 }

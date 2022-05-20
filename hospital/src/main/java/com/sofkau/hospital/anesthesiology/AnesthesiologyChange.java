@@ -1,10 +1,7 @@
 package com.sofkau.hospital.anesthesiology;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.sofkau.hospital.anesthesiology.events.AnesthesiaAdded;
-import com.sofkau.hospital.anesthesiology.events.AnesthesiologistAdded;
-import com.sofkau.hospital.anesthesiology.events.AnesthesiologyCreated;
-import com.sofkau.hospital.anesthesiology.events.NurseAdded;
+import com.sofkau.hospital.anesthesiology.events.*;
 
 import java.util.HashSet;
 
@@ -23,7 +20,7 @@ public class AnesthesiologyChange extends EventChange {
             if (numberOfAnesthesiologists>5){
                 throw new IllegalArgumentException("You can't create more than 5 anesthesiologists");
             }
-            anesthesiology.anesthesiologists.add(new Anesthesiologist(event.EntityId(), event.YearsOfExperience(), event.TypeOfAnesthesia()));
+            anesthesiology.anesthesiologists.add(new Anesthesiologist(event.getEntityId(), event.getYearsOfExperience(), event.getTypeOfAnesthesia()));
         });
 
         apply((NurseAdded event)->{
@@ -31,16 +28,21 @@ public class AnesthesiologyChange extends EventChange {
             if (numberOfNurses>4){
                 throw new IllegalArgumentException("You can't create more than 4 nurses");
             }
-            anesthesiology.nurses.add(new Nurse(event.EntityId(), event.Uniform()));
+            anesthesiology.nurses.add(new Nurse(event.getEntityId(), event.getUniform()));
         });
 
         apply((AnesthesiaAdded event)->{
             var numberOfAnesthesias = anesthesiology.Anesthesias().size();
             if (numberOfAnesthesias>5){
-                throw new IllegalArgumentException("You can't create more than 4 nurses");
+                throw new IllegalArgumentException("You can't create more than 5 anesthesias");
             }
-            anesthesiology.anesthesias.add(new Anesthesia(event.EntityId(), event.ExpiryDate(), event.Brand()));
+            anesthesiology.anesthesias.add(new Anesthesia(event.getEntityId(), event.getExpiryDate(), event.getBrand()));
         });
+
+        apply((ANDirectorChanged event) -> anesthesiology.anDirector = event.getAnDirector());
+
+
+
     }
 
 }

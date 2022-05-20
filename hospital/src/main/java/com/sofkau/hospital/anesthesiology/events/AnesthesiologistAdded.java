@@ -23,15 +23,15 @@ public class AnesthesiologistAdded extends DomainEvent {
 
     //getters
 
-    public YearsOfExperience YearsOfExperience() {
+    public YearsOfExperience getYearsOfExperience() {
         return yearsOfExperience;
     }
 
-    public TypeOfAnesthesia TypeOfAnesthesia() {
+    public TypeOfAnesthesia getTypeOfAnesthesia() {
         return typeOfAnesthesia;
     }
 
-    public AnesthesiologistID EntityId() {
+    public AnesthesiologistID getEntityId() {
         return entityId;
     }
 }

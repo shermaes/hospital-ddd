@@ -2,10 +2,7 @@ package com.sofkau.hospital.anesthesiology;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.sofkau.hospital.anesthesiology.events.AnesthesiaAdded;
-import com.sofkau.hospital.anesthesiology.events.AnesthesiologistAdded;
-import com.sofkau.hospital.anesthesiology.events.AnesthesiologyCreated;
-import com.sofkau.hospital.anesthesiology.events.NurseAdded;
+import com.sofkau.hospital.anesthesiology.events.*;
 import com.sofkau.hospital.anesthesiology.values.*;
 
 import java.util.HashSet;
@@ -55,6 +52,11 @@ public void addNurse(NurseID entityId, Uniform uniform){
         Objects.requireNonNull(brand);
         appendChange(new AnesthesiaAdded(entityId, expiryDate, brand)).apply();
     }
+
+    public void changeANDirector(ANDirector anDirector) {
+        appendChange(new ANDirectorChanged(anDirector)).apply();
+    }
+
     //getters
     public ANDirector AnDirector() {
         return anDirector;

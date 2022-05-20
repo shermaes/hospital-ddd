@@ -15,11 +15,11 @@ public class NurseAdded extends DomainEvent {
         this.entityId = entityId;
     }
 //getter
-    public Uniform Uniform() {
+    public Uniform getUniform() {
         return uniform;
     }
 
-    public NurseID EntityId(){
+    public NurseID getEntityId(){
         return entityId;
     }
 
