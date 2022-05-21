@@ -8,8 +8,8 @@ public class SurgeryCreated extends DomainEvent {
 
     private final Procedure procedure;
 
-    public SurgeryCreated(SurgeryID entityId, Procedure procedure) {
-        super("shermaestre.surgery.SurgeryCreated");
+    public SurgeryCreated(Procedure procedure) {
+        super("SherMaestre.Surgery.SurgeryCreated");
         this.procedure = procedure;
     }
 

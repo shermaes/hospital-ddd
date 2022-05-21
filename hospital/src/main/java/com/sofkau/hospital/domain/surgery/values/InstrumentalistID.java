@@ -16,6 +16,5 @@ public class InstrumentalistID extends Identity {
         return new InstrumentalistID(id);
     }
 
-    {
-    }
+
 }

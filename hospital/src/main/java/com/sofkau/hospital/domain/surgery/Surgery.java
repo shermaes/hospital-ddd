@@ -17,18 +17,18 @@ public class Surgery extends AggregateEvent<SurgeryID> {
     protected Set<MedicalStudent> medicalStudents;
 
     //creating the aggregate
-    public Surgery(SurgeryID entityId, Procedure procedure) {
-        super(entityId);
-        appendChange(new SurgeryCreated(entityId, procedure)).apply();
+    public Surgery(SurgeryID surgeryId, Procedure procedure) {
+        super(surgeryId);
+        appendChange(new SurgeryCreated(procedure)).apply();
     }
 
-    private Surgery(SurgeryID entityId) {
-        super(entityId);
+    private Surgery(SurgeryID surgeryId) {
+        super(surgeryId);
         subscribe(new SurgeryChange(this));
     }
 
-    public static Surgery from(SurgeryID entityId, List<DomainEvent> events) {
-        Surgery surgery = new Surgery(entityId);
+    public static Surgery from(SurgeryID surgeryId, List<DomainEvent> events) {
+        Surgery surgery = new Surgery(surgeryId);
         events.forEach((event) -> surgery.applyEvent(event));
         return surgery;
     }
