@@ -118,4 +118,5 @@ public class Anesthesiology extends AggregateEvent<AnesthesiologyID> {
                 .filter(nurse -> nurse.identity().equals(entityId))
                 .findFirst();
     }
+
 }
