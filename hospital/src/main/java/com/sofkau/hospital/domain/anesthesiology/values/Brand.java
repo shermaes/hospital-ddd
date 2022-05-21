@@ -14,10 +14,9 @@ public class Brand implements ValueObject<String> {
             throw new IllegalArgumentException("The brand name can not be empty");
         }
     }
-
     @Override
     public String value() {
-        return null;
+        return value;
     }
 
     @Override

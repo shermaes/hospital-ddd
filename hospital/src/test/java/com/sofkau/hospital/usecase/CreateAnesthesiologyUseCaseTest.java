@@ -8,9 +8,11 @@ import com.sofkau.hospital.domain.anesthesiology.values.ANDirector;
 import com.sofkau.hospital.domain.anesthesiology.values.AnesthesiologyID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-public class
-CreateAnesthesiologyUseCaseTest {
+@ExtendWith(MockitoExtension.class)
+public class CreateAnesthesiologyUseCaseTest {
 
     @Test
     void createAnesthesiologyWithAllTheParameters(){

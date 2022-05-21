@@ -2,9 +2,9 @@ package com.sofkau.hospital.usecase;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
-import co.com.sofka.business.support.RequestCommand;
-import com.sofkau.hospital.domain.anesthesiology.commands.AddAnesthesia;
+import co.com.sofka.business.support.TriggeredEvent;
 import com.sofkau.hospital.domain.anesthesiology.events.AnesthesiaAdded;
+import com.sofkau.hospital.domain.anesthesiology.events.AnesthesiaBrandUpdated;
 import com.sofkau.hospital.domain.anesthesiology.events.AnesthesiologyCreated;
 import com.sofkau.hospital.domain.anesthesiology.values.*;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-public class AddAnesthesiaUseCaseTest {
+class UpdateAnesthesiaBrandUseCaseTest {
 
     private final String ROOTID = "xxxx";
 
@@ -25,27 +25,28 @@ public class AddAnesthesiaUseCaseTest {
     private DomainEventRepository repository;
 
     @Test
-    void addAnesthesia(){
-        var command = new AddAnesthesia(AnesthesiologyID.of(ROOTID), AnesthesiaID.of("abcd124"), new Storage(8), new Brand("Farmacos Almendia"));
-        var useCase = new AddAnesthesiaUseCase();
+    void updateAnesthesiaBrand(){
+      var eventPast = new AnesthesiaBrandUpdated(AnesthesiologyID.of(ROOTID), AnesthesiaID.of("ert"), new Brand("Farmaceuticos Beun Dia"));
+       var useCase = new UpdateAnesthesiaBrandUseCase();
 
         Mockito.when(repository.getEventsBy(ROOTID)).thenReturn(List.of(
-                new AnesthesiologyCreated(
-                        new ANDirector("Andres Martinez")
-                )
-        ));
+                new AnesthesiologyCreated(new ANDirector("Andres Martinez")), new AnesthesiaAdded(AnesthesiaID.of("ert"), new Storage(7), new Brand("Farmatodo")))
+        );
         useCase.addRepository(repository);
 
         var events = UseCaseHandler
                 .getInstance()
                 .setIdentifyExecutor(ROOTID)
-                .syncExecutor(useCase, new RequestCommand<>(command))
-                .orElseThrow(()-> new IllegalArgumentException("Something went wrong creating the anesthesia"))
+                .syncExecutor(useCase, new TriggeredEvent<>(eventPast))
+                .orElseThrow(()-> new IllegalArgumentException("Something went wrong changing the brand"))
                 .getDomainEvents();
 
-        var event = (AnesthesiaAdded)events.get(0);
-        Assertions.assertEquals(command.getStorage().value(), event.getStorage().value());
-        Assertions.assertEquals(command.getBrand().value(), event.getBrand().value());
+        var event = (AnesthesiaBrandUpdated)events.get(0);
+        Assertions.assertEquals(eventPast.getBrand().value(), event.getBrand().value());
         Mockito.verify(repository).getEventsBy(ROOTID);
+        System.out.println(eventPast.getBrand().value());
+        System.out.println(event.getBrand().value());
+
     }
+
 }

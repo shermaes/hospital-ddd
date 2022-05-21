@@ -68,12 +68,12 @@ public class Anesthesiology extends AggregateEvent<AnesthesiologyID> {
         appendChange(new NurseUniformChanged(entityId, uniform)).apply();
     }
 
-    public void updateAnesthesiaStorage(AnesthesiaID entityId, Storage storage) {
-        appendChange(new AnesthesiaStorageUpdated(entityId, storage)).apply();
+    public void updateAnesthesiaStorage(AnesthesiologyID anesthesiologyID,AnesthesiaID entityId, Storage storage) {
+        appendChange(new AnesthesiaStorageUpdated(anesthesiologyID, entityId, storage)).apply();
     }
 
-    public void updateAnesthesiaBrand(AnesthesiaID entityId, Brand brand) {
-        appendChange(new AnesthesiaBrandUpdated(entityId, brand)).apply();
+    public void updateAnesthesiaBrand(AnesthesiologyID anesthesiologyID,AnesthesiaID entityId, Brand brand) {
+        appendChange(new AnesthesiaBrandUpdated(anesthesiologyID,entityId, brand)).apply();
     }
 
     public void updatedAnesthesiologistTypeOfAnesthesia(AnesthesiologistID entityId, TypeOfAnesthesia typeOfAnesthesia) {
