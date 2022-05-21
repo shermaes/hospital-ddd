@@ -11,7 +11,7 @@ public class NurseAdded extends DomainEvent {
 
     //constructor
     public NurseAdded(NurseID entityId, Uniform uniform) {
-        super("SherMaestre.anesthesiology.UniformAdded");
+        super("SherMaestre.anesthesiology.NurseAdded");
         this.uniform = uniform;
         this.entityId = entityId;
     }

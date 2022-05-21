@@ -11,8 +11,8 @@ public class NurseID extends Identity {
         super(vvid);
     }
 
-    public static AnesthesiologyID of(String id) {
-        return new AnesthesiologyID(id);
+    public static NurseID of(String id) {
+        return new NurseID(id);
     }
 
 

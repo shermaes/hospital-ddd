@@ -36,7 +36,7 @@ public class AnesthesiologyChange extends EventChange {
             if (numberOfAnesthesias > 5) {
                 throw new IllegalArgumentException("You can't create more than 5 anesthesias");
             }
-            anesthesiology.anesthesias.add(new Anesthesia(event.getEntityId(), event.getExpiryDate(), event.getBrand()));
+            anesthesiology.anesthesias.add(new Anesthesia(event.getEntityId(), event.getStorage(), event.getBrand()));
         });
 
         apply((ANDirectorChanged event) -> anesthesiology.anDirector = event.getAnDirector());
