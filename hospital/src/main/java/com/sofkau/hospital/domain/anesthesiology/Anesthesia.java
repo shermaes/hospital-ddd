@@ -1,12 +1,12 @@
 package com.sofkau.hospital.domain.anesthesiology;
 
 import co.com.sofka.domain.generic.Entity;
-import com.sofkau.hospital.anesthesiology.values.*;
 import com.sofkau.hospital.domain.anesthesiology.values.AnesthesiaID;
 import com.sofkau.hospital.domain.anesthesiology.values.Brand;
 import com.sofkau.hospital.domain.anesthesiology.values.Storage;
 
 import java.util.Objects;
+
 
 public class Anesthesia extends Entity<AnesthesiaID> {
     private Storage storage;

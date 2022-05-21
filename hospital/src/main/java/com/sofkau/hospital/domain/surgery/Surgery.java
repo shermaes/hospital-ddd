@@ -4,8 +4,6 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkau.hospital.domain.surgery.events.*;
 import com.sofkau.hospital.domain.surgery.values.*;
-import com.sofkau.hospital.surgery.events.*;
-import com.sofkau.hospital.surgery.values.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,7 +19,7 @@ public class Surgery extends AggregateEvent<SurgeryID> {
     //creating the aggregate
     public Surgery(SurgeryID entityId, Procedure procedure) {
         super(entityId);
-        appendChange(new SurgeryCreated(procedure)).apply();
+        appendChange(new SurgeryCreated(entityId, procedure)).apply();
     }
 
     private Surgery(SurgeryID entityId) {

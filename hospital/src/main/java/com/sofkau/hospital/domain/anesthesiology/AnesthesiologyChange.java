@@ -1,7 +1,6 @@
 package com.sofkau.hospital.domain.anesthesiology;
 
 import co.com.sofka.domain.generic.EventChange;
-import com.sofkau.hospital.anesthesiology.events.*;
 import com.sofkau.hospital.domain.anesthesiology.events.*;
 
 import java.util.HashSet;

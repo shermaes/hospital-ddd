@@ -2,8 +2,6 @@ package com.sofkau.hospital.domain.anesthesiology;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.sofkau.hospital.anesthesiology.events.*;
-import com.sofkau.hospital.anesthesiology.values.*;
 import com.sofkau.hospital.domain.anesthesiology.events.*;
 import com.sofkau.hospital.domain.anesthesiology.values.*;
 
