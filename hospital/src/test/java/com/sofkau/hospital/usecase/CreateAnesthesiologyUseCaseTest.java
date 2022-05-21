@@ -9,7 +9,8 @@ import com.sofkau.hospital.domain.anesthesiology.values.AnesthesiologyID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CreateAnesthesiologyUseCaseTest {
+public class
+CreateAnesthesiologyUseCaseTest {
 
     @Test
     void createAnesthesiologyWithAllTheParameters(){

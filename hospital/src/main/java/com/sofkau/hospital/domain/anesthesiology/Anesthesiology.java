@@ -18,18 +18,18 @@ public class Anesthesiology extends AggregateEvent<AnesthesiologyID> {
     protected Set<Anesthesia> anesthesias;
 
     //creating the aggregate
-    public Anesthesiology(AnesthesiologyID entityId, ANDirector anDirector) {
-        super(entityId);
+    public Anesthesiology(AnesthesiologyID anesthesiologyId, ANDirector anDirector) {
+        super(anesthesiologyId);
         appendChange(new AnesthesiologyCreated(anDirector)).apply();
     }
 
-    private Anesthesiology(AnesthesiologyID entityId) {
-        super(entityId);
+    private Anesthesiology(AnesthesiologyID anesthesiologyId) {
+        super(anesthesiologyId);
         subscribe(new AnesthesiologyChange(this));
     }
 
-    public static Anesthesiology from(AnesthesiologyID entityId, List<DomainEvent> events) {
-        Anesthesiology anesthesiology = new Anesthesiology(entityId);
+    public static Anesthesiology from(AnesthesiologyID anesthesiologyId, List<DomainEvent> events) {
+        Anesthesiology anesthesiology = new Anesthesiology(anesthesiologyId);
         events.forEach((event) -> anesthesiology.applyEvent(event));
         return anesthesiology;
     }

@@ -2,6 +2,7 @@ package com.sofkau.hospital.domain.anesthesiology.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofkau.hospital.domain.anesthesiology.values.AnesthesiologistID;
+import com.sofkau.hospital.domain.anesthesiology.values.AnesthesiologyID;
 import com.sofkau.hospital.domain.anesthesiology.values.TypeOfAnesthesia;
 import com.sofkau.hospital.domain.anesthesiology.values.YearsOfExperience;
 
@@ -34,4 +35,6 @@ public class AnesthesiologistAdded extends DomainEvent {
     public AnesthesiologistID getEntityId() {
         return entityId;
     }
+
+
 }
